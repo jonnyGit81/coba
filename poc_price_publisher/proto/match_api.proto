@@ -1,0 +1,23 @@
+// protoc --go_out=plugins=grpc:. *.proto
+syntax = "proto3";
+
+package match_api;
+
+option go_package = ".;match_api";
+
+service MatchAPI {
+    rpc RequestPricesStreaming(MatchEmpty) returns (stream PriceStreamResponse) {};
+}
+
+message MatchEmpty {}
+
+message PriceStreamResponse {
+    Prices Prices = 1;
+}
+
+message Prices {
+    string symbol = 1;
+    string time = 2;
+  	string bid = 3;
+  	string ask = 4;
+}

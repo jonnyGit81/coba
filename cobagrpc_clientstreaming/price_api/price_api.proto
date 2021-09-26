@@ -1,0 +1,20 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+
+service API {
+    rpc MEasClientOfPEAndStreamingSendPriceUpdateToPE(stream Prices) returns (Acknowledge) {};
+}
+
+option go_package = ".;price_api";
+
+message Prices {
+    string symbol = 1;
+    string time = 2;
+	string bid = 3;
+	string ask = 4;
+}
+
+message Acknowledge {
+    string ack = 1;
+}

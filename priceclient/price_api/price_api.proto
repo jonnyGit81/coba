@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+//package price_api;
+
+service API {
+    rpc NewPrices(Prices) returns (Empty) {};
+    rpc NewTrade(Trade) returns (Empty) {};
+    rpc SetPriceParams(PriceParams) returns (Empty) {};
+    rpc Subscribe(SubscribeReq) returns (SubscribeResp) {};
+    rpc Unsubscribe(UnsubscribeReq) returns (Empty) {};
+    rpc GetPriceStream(GetPriceStreamReq) returns (stream StreamResponse) {};
+    rpc UpdateAccount(UpdateAccountReq) returns (Empty) {};
+}
+
+message Prices {
+    string symbol = 1;
+    string time = 2;
+    string bid = 3;
+    string ask = 4;
+    string last_trade = 5;
+    repeated PriceLevel bids = 6;
+    repeated PriceLevel asks = 7;
+    repeated PriceLevelOrder bid_orders = 8;
+    repeated PriceLevelOrder ask_orders = 9;
+    string last_trade_qty = 10;
+    string last_trade_time = 11;
+    string value_date = 12;
+    string bid_quote_id = 13;
+    string ask_quote_id = 14;
+    string trading_session_id = 15;
+    string type = 16;
+}
+
+message PriceLevel {
+    string price = 1;
+    string qty = 2;
+    string order_count = 3;
+}
+
+message PriceLevelOrder {
+    string price = 1;
+    string qty = 2;
+    string order_id = 3;
+}
+
+message Trade {
+    string symbol = 1;
+    string time = 2;
+	string price = 3;
+	string qty = 4;
+}
+
+message PriceParams {
+    string symbol = 1;
+    // string ref_symbol = 2;
+    repeated string ref_symbols = 2;
+    string conv_factor = 3;
+    string fx_symbol = 4;
+    string bid_premium = 5;
+    string ask_premium = 6;
+    string spread = 7;
+    string order_type = 8;
+    string ref_type = 9;
+    string premium_type = 10;
+}
+
+message GetPriceStreamReq {
+}
+
+message StreamResponse {
+    string type = 1;
+    Prices prices = 2;
+    Trade trade = 3;
+}
+
+message SubscribeReq {
+    string symbol = 1;
+    string value_date = 2;
+    string qty = 3;
+}
+
+message SubscribeResp {
+    string sub_id = 1;
+}
+
+message UnsubscribeReq {
+    string sub_id = 1;
+    string symbol = 2;
+    string value_date = 3;
+    string qty = 4;
+}
+
+message Empty {
+}
+
+message UpdateAccountReq {
+    string account_id = 1;
+    string name = 2;
+    bool can_send_orders = 3;
+}
