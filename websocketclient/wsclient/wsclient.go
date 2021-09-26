@@ -12,7 +12,7 @@ import (
 )
 
 // Send pings to peer with this period
-const pingPeriod = 5 * time.Second
+const pingPeriod = 30 * time.Second
 
 // WebSocketClient return websocket client connection
 type WebSocketClient struct {
