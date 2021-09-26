@@ -28,23 +28,11 @@ func main() {
 
 	go func() {
 
-		// symbols := []string{"DUMMY","INTL:XAU/USD","JPM:HKD/SGD","JPM:USD/HKD","JPM:USD/SGD","JPM:XAG/SGD","JPM:XAG/USD","JPM:XAU/SGD","JPM:XAU/USD","JPM:XPD/USD","JPM:XPT/USD","UBS:AUD/USD","UBS:HKD/SGD","UBS:USD/HKD","UBS:USD/SGD","UBS:XAG/SGD","UBS:XAG/USD","UBS:XAU/SGD","UBS:XAU/USD","UBS:XPD/SGD","UBS:XPD/USD","UBS:XPT/SGD","UBS:XPT/USD","XAU/USD-reg","XAU/USD-vip","XAG/USD-reg","XAG/USD-vip","XAG/SGD-reg","XAG/SGD-vip","XPD/USD-reg","XPD/USD-vip","XPT/SGD-reg","XPT/SGD-vip","XPT/USD-reg","XPT/USD-vip","XPD/SGD-vip","XPD/SGD-reg","XAU/SGD-reg","XAU/SGD-vip"}
-		// reqBody := &MsgInOld{Type:"set_symbols", Symbols: symbols }
-		// err := client.Write(reqBody)
-		// if err != nil {
-		// 	fmt.Printf("error: %v, writing error\n", err)
-		// }
-
-		ticker := time.NewTicker(time.Second * 5)
-		i := 0
-		for range ticker.C {
-			symbols := []string{"DUMMY", "INTL:XAU/USD", "JPM:HKD/SGD", "JPM:USD/HKD", "JPM:USD/SGD", "JPM:XAG/SGD", "JPM:XAG/USD", "JPM:XAU/SGD", "JPM:XAU/USD", "JPM:XPD/USD", "JPM:XPT/USD", "UBS:AUD/USD", "UBS:HKD/SGD", "UBS:USD/HKD", "UBS:USD/SGD", "UBS:XAG/SGD", "UBS:XAG/USD", "UBS:XAU/SGD", "UBS:XAU/USD", "UBS:XPD/SGD", "UBS:XPD/USD", "UBS:XPT/SGD", "UBS:XPT/USD", "XAU/USD-reg", "XAU/USD-vip", "XAG/USD-reg", "XAG/USD-vip", "XAG/SGD-reg", "XAG/SGD-vip", "XPD/USD-reg", "XPD/USD-vip", "XPT/SGD-reg", "XPT/SGD-vip", "XPT/USD-reg", "XPT/USD-vip", "XPD/SGD-vip", "XPD/SGD-reg", "XAU/SGD-reg", "XAU/SGD-vip"}
-			reqBody := &MsgInOld{Type: "set_symbols", Symbols: symbols}
-			err := client.Write(reqBody)
-			if err != nil {
-				fmt.Printf("error: %v, writing error\n", err)
-			}
-			i++
+		symbols := []string{"DUMMY", "INTL:XAU/USD", "JPM:HKD/SGD", "JPM:USD/HKD", "JPM:USD/SGD", "JPM:XAG/SGD", "JPM:XAG/USD", "JPM:XAU/SGD", "JPM:XAU/USD", "JPM:XPD/USD", "JPM:XPT/USD", "UBS:AUD/USD", "UBS:HKD/SGD", "UBS:USD/HKD", "UBS:USD/SGD", "UBS:XAG/SGD", "UBS:XAG/USD", "UBS:XAU/SGD", "UBS:XAU/USD", "UBS:XPD/SGD", "UBS:XPD/USD", "UBS:XPT/SGD", "UBS:XPT/USD", "XAU/USD-reg", "XAU/USD-vip", "XAG/USD-reg", "XAG/USD-vip", "XAG/SGD-reg", "XAG/SGD-vip", "XPD/USD-reg", "XPD/USD-vip", "XPT/SGD-reg", "XPT/SGD-vip", "XPT/USD-reg", "XPT/USD-vip", "XPD/SGD-vip", "XPD/SGD-reg", "XAU/SGD-reg", "XAU/SGD-vip"}
+		reqBody := &MsgInOld{Type: "set_symbols", Symbols: symbols}
+		err := client.Write(reqBody)
+		if err != nil {
+			fmt.Printf("error: %v, writing error\n", err)
 		}
 
 		// write down data every 100 ms
