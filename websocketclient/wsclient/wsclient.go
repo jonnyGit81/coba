@@ -32,7 +32,7 @@ func NewWebSocketClient(host, channel string) (*WebSocketClient, error) {
 	}
 	conn.ctx, conn.ctxCancel = context.WithCancel(context.Background())
 
-	u := url.URL{Scheme: "wss", Host: host, Path: channel}
+	u := url.URL{Scheme: "ws", Host: host, Path: channel}
 	conn.configStr = u.String()
 
 	go conn.listen()

@@ -10,7 +10,8 @@ import (
 	"time"
 )
 
-var addr = flag.String("addr", "price-metalor-uat.hydrax.io", "http service address")
+//var addr = flag.String("addr", "price-metalor-uat.hydrax.io", "http service address")
+var addr = flag.String("addr", "localhost:5565", "http service address")
 
 type MsgInOld struct {
 	Type    string   `json:"type"`

@@ -2,15 +2,12 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"github.com/jonnyGit81/coba/priceclient/pkg"
 	"github.com/jonnyGit81/coba/priceclient/price_api"
-	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"os"
 	"os/signal"
-	"time"
 )
 
 var dc bool
@@ -86,10 +83,6 @@ func main() {
 
 	logger := applog.InitLogger()
 
-	INTERVAL := viper.GetInt("price_clearing_interval")
-
-	fmt.Println(INTERVAL)
-	time.Sleep(time.Hour * 1)
 	initDummyPrices()
 
 	con, conErr := grpc.Dial("localhost:5566", grpc.WithInsecure())
